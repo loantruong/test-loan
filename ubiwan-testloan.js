@@ -24,18 +24,30 @@ function control() {
 
 function calculator(tab) {
   const [nbA, operator, nbB] = tab; 
-  const a = Number(nbA);
-  const b = Number(nbB);
-  switch (operator) {
-    case '-':
-      return a - b;
-    case '+':
-      return a + b;
-    case '*':
-      return a * b;
-    case '/':
-      return a / b;
-    default:
-      console.log(`Oups, il semble y avoir un problème avec l'opérateur saisi ${operator}.`);
-  } 
+  // check if nbA and nbB is number
+  if(isInteger(nbA) && isInteger(nbB)) {
+    const a = Number(nbA);
+    const b = Number(nbB);
+    switch (operator) {
+      case '-':
+        return a - b;
+      case '+':
+        return a + b;
+      case '*':
+        return a * b;
+      case '/':
+        return a / b;
+      default:
+        console.log(`Oups, il semble y avoir un problème avec l'opérateur saisi ${operator}.`);
+    } 
+  }
+  else {
+    console.log(`oups veuillez rentrer une opération valide de type A [/,*,-,+] B`)
+  }
+  
+}
+
+
+function isInteger(value) {
+  return /^\d+$/.test(value);
 }
